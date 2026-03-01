@@ -1,116 +1,69 @@
+<h1 align="center">Welcome to Balis</h1>
+
+<p align="center">
+  <strong>These bylaws are made by</strong>
+</p>
+
 <h1 align="center">
-  Angularsockets
+  <span style="color:red; font-size:55px;">MONTE DEV</span>
 </h1>
 
-<p align="center">
-  <img src="https://dabby.vercel.app/menu.jpg" width="400" style="border-radius:8px;">
-</p>
-
-<p align="center">
-  <strong>Enterprise-Grade WhatsApp Business API</strong>
-</p>
-
-<p align="center">
-  <sub>High-performance modified Baileys library for scalable WhatsApp integrations</sub>
-</p>
+<h3 align="center">MONTE TOP 1 DEV AR</h3>
 
 ---
 
-# 🎀 Angularsockets
+<div align="center">
+╔══════════════════════════════╗ ║        ⚡ Baylis Explanation ⚡        ║ ╠══════════════════════════════╣ ║  📲 Whatsapp Boot System NODE         ║ ║  🔗 Worker linking through phone      ║ ║     number or QR system               ║ ║  🛠️ Developed with high craft 👍🐦     ║ ╚══════════════════════════════╝
+Copy code
 
-> **Angularsockets** a mod og *Baileys WhatsApp Web API* by **Mr Frank** 
+</div>
+
 ---
 
-## ✨ Mafeatures
-✅ Stabil & lasts long 
+## 🇸🇩 Developer Contact
 
-✅ Support multi-device (MD)  
+**Monte Dev**  
+📞 +249 92242 0554  
+🇸🇩 Sudan
 
-✅ Support buttons
+---
 
-✅ SSupport Custom Pairing Code
+# 🚀 Balis Features
 
-✅ Support  Group
+> Modified Baileys WhatsApp Web API System
+
+### ✨ Main Features
+
+✅ Stable & Long Lasting  
+✅ Multi-Device Support (MD)  
+✅ Buttons Support  
+✅ Custom Pairing Code Support  
+✅ Full Group Support  
+✅ Fast Event Handling  
+✅ @lid Mention Fix For Groups  
 
 ---
 
 ## 📦 Installation
-Install npm
+
 ```bash
-npm i angularsockets
-
-
-## Handling Events
-
-- Baileys uses the EventEmitter syntax for events. 
-They're all nicely typed up, so you shouldn't have any issues with an Intellisense editor like VS Code.
-
-> [!IMPORTANT]
-> **The events are [these](https://baileys.whiskeysockets.io/types/BaileysEventMap.html)**, it's important you see all events
-
-You can listen to these events like this:
-```ts
+npm install
+⚙️ Event Handling
+Balis uses EventEmitter system just like original Baileys.
+Important: Check all Baileys events documentation before use.
+Example:
+Js
+Copy code
 const sock = makeWASocket()
+
 sock.ev.on('messages.upsert', ({ messages }) => {
-    console.log('got messages', messages)
+  console.log('New message received:', messages)
 })
-```
-This is a fix mention @lid for bots working in groups
-
-```js
-
-sock.ev.on('messages.upsert', async chatUpdate => {
-try {
-mek = chatUpdate.messages[0]
-if (!mek.message) return
-mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-const m = mek
-const isGroup = m.key.remoteJid.endsWith('@g.us');
-const mentionedJid = mek.message?.extendedTextMessage?.contextInfo?.mentionedJid || [];
-if (isGroup && Array.isArray(mentionedJid) && mentionedJid.some(j => j.endsWith('@lid'))) {
-    const groupMetadata = await sock.groupMetadata(mek.key.remoteJid);
-    const resolvedMentions = mentionedJid.map(jid => {
-        if (jid.endsWith('@lid')) {
-            const match = groupMetadata.participants.find(p => p.id === jid);
-            return match?.jid || jid;
-        }
-        return jid;
-    });
-    mek.message.extendedTextMessage.contextInfo.mentionedJid = resolvedMentions;
-const lidMap = {};
-mentionedJid.forEach(originalLid => {
-    if (originalLid.endsWith('@lid')) {
-        const match = groupMetadata.participants.find(p => p.id === originalLid);
-        if (match && match.jid) {
-            const jidNumber = match.jid.split('@')[0]; 
-            const lidNumber = originalLid.split('@')[0];
-            lidMap[lidNumber] = jidNumber;
-        }
-    }
-});
-const replaceLidInText = (text) => {
-    if (!text) return text;
-    Object.entries(lidMap).forEach(([lidNum, jidNum]) => {
-        const regex = new RegExp(`@${lidNum}\\b`, 'g');
-        text = text.replace(regex, `@${jidNum}`);
-    });
-    return text;
-};
-if (mek.message.conversation) {
-    mek.message.conversation = replaceLidInText(mek.message.conversation);
-}
-if (mek.message.extendedTextMessage?.text) {
-    mek.message.extendedTextMessage.text = replaceLidInText(mek.message.extendedTextMessage.text);
-}
-    let msg = {
-        messages: [proto.WebMessageInfo.fromObject(mek)],
-        type: "append",
-    };
-    return conn.ev.emit("messages.upsert", msg);
-}
-} catch (err) {
-
-}
-});
-
+🔧 Group Mention Fix (@lid Support)
+Integrated system to automatically resolve @lid mentions inside groups.
+✔ Automatically maps lid to real jid
+✔ Replaces mention text correctly
+✔ Works with multi-device
+�
+🔥 Powered By MONTE DEV 🔥 
 ```
